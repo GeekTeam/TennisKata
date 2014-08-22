@@ -1,16 +1,29 @@
 
 public class Game {
 
-	private final PreDeuceScorer preDeuceScorer = new PreDeuceScorer();
-	private Scorer scorer = preDeuceScorer;
+	private final PreDeuceScorer preDeuceScorer;
+	private final PostDeuceScorer postDeuceScorer;
+	private Scorer scorer;
 
-	public Game() {
-		preDeuceScorer.add(new ScoreListener() {
-			
-			@Override
-			public void deuce() {
-			}
-		});
+	public Game(PreDeuceScorer preDeuceScorer, PostDeuceScorer postDeuceScorer) {
+
+		this.preDeuceScorer = preDeuceScorer;
+		this.postDeuceScorer = postDeuceScorer;
+
+		init(preDeuceScorer);
+	}
+
+	private void init(PreDeuceScorer preDeuceScorer) {
+
+		scorer = preDeuceScorer;
+
+		addListener(preDeuceScorer);
+	}
+
+	private void addListener(PreDeuceScorer preDeuceScorer) {
+		ScoreListener listener = new GameScoreListener(this);
+
+		preDeuceScorer.add(listener);
 	}
 
 	public String getScore() {
@@ -23,5 +36,9 @@ public class Game {
 
 	public void playerTwoScores() {
 		scorer.playerTwoScores();
+	}
+
+	void deuce() {
+		scorer = postDeuceScorer;
 	}
 }

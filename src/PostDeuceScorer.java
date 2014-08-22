@@ -2,14 +2,14 @@
 public class PostDeuceScorer implements Scorer {
 
 	private static final String[] SCORE = {"L","15","30","40"};
-	
-	private int playerOneIndex = 0;
-	private int playerTwoIndex = 0;
+
+	private int playerOneIndex = 3;
+	private int playerTwoIndex = 3;
 
 	@Override
 	public String getScore() {
 		if(playerOneIndex >=3 && playerOneIndex >=3) {
-			
+
 			if (playerOneIndex - playerTwoIndex == 1) {
 				return "Adv 1";
 			}

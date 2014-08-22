@@ -23,7 +23,6 @@ public class PreDeuceScorerTest {
 		verify(listener).deuce();
 	}
 
-
 	@Test
 	public void notifiesDeuceWhenPlayer2MakesDeuce() {
 
@@ -38,5 +37,4 @@ public class PreDeuceScorerTest {
 
 		verify(listener).deuce();
 	}
-
 }

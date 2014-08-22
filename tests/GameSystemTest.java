@@ -3,9 +3,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 
-public class GameTest {
+public class GameSystemTest {
 
-	Game game = new Game();
+	Game game = new Game(new PreDeuceScorer(), new PostDeuceScorer());
 
 	@Test
 	public void initialScoreIsLoveAll() {
