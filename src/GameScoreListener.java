@@ -11,4 +11,9 @@ final class GameScoreListener implements ScoreListener {
 	public void deuce() {
 		game.deuce();
 	}
+
+	@Override
+	public void playerOneWon() {
+		game.playerOneWon();
+	}
 }

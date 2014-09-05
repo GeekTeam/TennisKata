@@ -1,8 +1,8 @@
 
 public class PreDeuceScorer implements Scorer {
 
-	private static final String[] SCORE = {"L","15","30","40"};
-	
+	private static final String[] SCORE = { "L", "15", "30", "40" };
+
 	private int playerOneIndex = 0;
 	private int playerTwoIndex = 0;
 
@@ -10,24 +10,14 @@ public class PreDeuceScorer implements Scorer {
 
 	@Override
 	public String getScore() {
-		if(isDeuce()) {
-			
-			if (playerOneIndex - playerTwoIndex == 1) {
-				return "Adv 1";
-			}
-			return "Deuce";
-		}
 		return SCORE[playerOneIndex] + "-" + SCORE[playerTwoIndex];
-	}
-
-	private boolean isDeuce() {
-		return playerOneIndex >=3 && playerTwoIndex >=3;
 	}
 
 	@Override
 	public void playerOneScores() {
 		playerOneIndex++;
 		checkForDeuce();
+		checkForPlayerOneWon();
 	}
 
 	@Override
@@ -40,6 +30,15 @@ public class PreDeuceScorer implements Scorer {
 		if (isDeuce()) {
 			listener.deuce();
 		}
+	}
+
+	private boolean isDeuce() {
+		return playerOneIndex >=3 && playerTwoIndex >=3;
+	}
+
+	private void checkForPlayerOneWon() {
+		if (playerOneIndex == 4)
+			listener.playerOneWon();
 	}
 
 	public void add(ScoreListener listener) {

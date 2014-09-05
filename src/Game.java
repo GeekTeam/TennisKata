@@ -41,4 +41,7 @@ public class Game {
 	void deuce() {
 		scorer = postDeuceScorer;
 	}
+
+	public void playerOneWon() {
+	}
 }

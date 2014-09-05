@@ -13,6 +13,8 @@ public class GameUnitTest {
 	PreDeuceScorer preDeuceScorer = mock(PreDeuceScorer.class);
 	PostDeuceScorer postDeuceScorer = mock(PostDeuceScorer.class);
 
+	GameOverState playerOneGameOverState;
+
 
 	@Before
 	public void setUp(){
@@ -45,6 +47,17 @@ public class GameUnitTest {
 
 		when(postDeuceScorer.getScore()).thenReturn("Adv 1");
 		assertEquals("Adv 1", game.getScore());
+	}
+
+	@Test
+	public void delegatesToGameOverWhenPlayerOneWins() {
+
+		game.playerOneWon();
+
+//		verify(playerOneGameOverState).playerOneWon();
+
+		when(playerOneGameOverState.getScore()).thenReturn("Player 1 Won");
+		assertEquals("Player 1 Won", game.getScore());
 	}
 
 }

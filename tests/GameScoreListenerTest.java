@@ -10,10 +10,20 @@ public class GameScoreListenerTest {
 	@Test
 	public void noitfiesTheGameWhenDeuceIsReached() {
 		listener = new GameScoreListener(game);
-		
+
 		listener.deuce();
 
 		verify(game).deuce();
+	}
+
+
+	@Test
+	public void noitfiesTheGameWhenPlayerOneWins() {
+		listener = new GameScoreListener(game);
+
+		listener.playerOneWon();
+
+		verify(game).playerOneWon();
 	}
 
 }
